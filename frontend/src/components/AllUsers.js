@@ -1,16 +1,6 @@
-import { useQuery } from "@apollo/client";
-import { GET_ALL_USERS } from "../Queries/gqlQueries";
 import "./AllUsers.css";
 
-export const AllUsers = () => {
-  const { loading, error, data } = useQuery(GET_ALL_USERS, {
-    fetchPolicy: "cache-first",
-    pollInterval: 500,
-  });
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-  console.log(data);
-
+export const AllUsers = ({ data }) => {
   return (
     <table className="table__class">
       <tr>

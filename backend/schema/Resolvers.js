@@ -5,7 +5,6 @@ const resolvers = {
     hello: () => "Hello World",
     getAllUsers: () => users,
     getUserById: (parent, args) => {
-      console.log(parent);
       user = users.find((user) => user.id === args.id);
       if (user) {
         return user;

@@ -8,14 +8,11 @@ const userInitialState = {
   designation: "",
 };
 
-export const CreateUser = () => {
+export const CreateUser = ({ addUser }) => {
   const [user, setUser] = useState(userInitialState);
-
-  const { name, email, designation } = user;
 
   const onChangeHandler = (e) =>
     setUser({ ...user, [e.target.name]: e.target.value });
-  const [addUser, { data }] = useMutation(CREATE_USER_ARGS);
 
   return (
     <div>
@@ -23,11 +20,7 @@ export const CreateUser = () => {
         onSubmit={(e) => {
           e.preventDefault();
           addUser({
-            variables: {
-              name,
-              email,
-              designation,
-            },
+            variables: user,
           });
           setUser(userInitialState);
         }}
